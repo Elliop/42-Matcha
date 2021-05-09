@@ -1,0 +1,76 @@
+import Database from "../../database";
+const con = require("../../database/db");
+const express = require("express");
+const router = express.Router();
+
+const checktmp = async (req) => new Promise(async (res, rej) => {
+    const { tmp } = req.body;    
+    let sql = "SELECT * FROM User WHERE tmp = ?";
+    con.query(sql, [tmp], function (err, result)
+    {
+        if (result.length != 0)
+        {
+            let tab = "True"
+            res(tab);
+        }
+        else
+        {
+            let tab = "False"
+            res(tab);
+        }
+    });
+})
+const getTab = async (req) => new Promise(async (res, rej) => {
+    const { tmp } = req.body;
+    const db = new Database();
+    const id = (await db.query(`SELECT * FROM User WHERE tmp = '${tmp}'`))[0].id
+    let tab1 = (await db.query(`SELECT id_user1 FROM Matching WHERE id_user2 = '${id}'`))
+    let tab2 = (await db.query(`SELECT id_user2 FROM Matching WHERE id_user1 = '${id}'`))
+    let tab = []
+    let j = 0
+    let i = 0
+    while (tab1[i])
+    {
+        tab[j] = tab1[i].id_user1
+        i++
+        j++
+    }
+    i = 0
+    while (tab2[j])
+    {
+        tab[j] = tab2[i].id_user2
+        i++
+        j++
+    }
+    res(tab);
+})
+
+router.post('/friends', async (req, res) => {
+    const { tmp } = req.body;
+    let checked = await checktmp(req);
+    if (checked == "True")
+    {
+        const db = new Database();
+        let obj = []
+        const tab = await getTab(req);
+        for (let index = 0; index < tab.length; index++) {
+            let data = {}
+            let all = (await db.query(`SELECT * FROM User WHERE id = '${tab[index]}'`))
+            const myid = (await db.query(`SELECT * FROM User WHERE tmp = '${tmp}'`))[0].id
+            data.id = all[0].id
+            data.username = all[0].username
+            data.pic = all[0].pic
+            data.conn = all[0].isconnected
+            data.myid = myid
+            obj.push(data);
+        }
+        res.send(obj);        
+    }
+    else
+    {
+        let obj = "Logout"
+        res.send(obj);
+    }  
+})
+
+module.exports = router;

@@ -1,0 +1,28 @@
+{
+  "name": "matcha-frontend",
+  "version": "1.0.0",
+  "description": "My groovy Nuxt.js project",
+  "author": "asalah, melhakki",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.8.4",
+    "@nuxtjs/axios": "^5.8.0",
+    "aframe": "^1.0.4",
+    "cookie-universal-nuxt": "^2.1.0",
+    "geolocation": "^0.2.0",
+    "nuxt": "^2.0.0",
+    "nuxt-socket-io": "^1.0.18",
+    "socket.io-client": "^2.3.0",
+    "vue-socket.io": "^3.0.7",
+    "vuetify": "^2.2.14"
+  },
+  "devDependencies": {
+    "@mdi/font": "^4.5.95"
+  }
+}
