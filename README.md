@@ -20,3 +20,12 @@ This is the second web project of school 42, it’s a dating WebSite where the u
 <h4>Setting page</h4>
 
 ![App 3](https://github.com/Elliop/42-Matcha/blob/main/Matcha/frontend/static/Matcha-5.png?raw=true)
+<h2>Matcha</h2>
+<p>This is the main page, here you can find people depending on what params you select</p>
+
+![Matcha](https://github.com/Elliop/42-Matcha/blob/main/Matcha/frontend/static/Matcha-6.png?raw=true)
+
+<h2>Chat</h2>
+<p>Only if there is a match (you like someone and he likes you back), then you can chat with him</p>
+
+![Chat](https://github.com/Elliop/42-Matcha/blob/main/Matcha/frontend/static/Matcha-7.png?raw=true)
