@@ -5,7 +5,9 @@ This is the second web project of school 42, it’s a dating WebSite where the u
 <h3>Server-side</h3>
 ```Node JS and Express JS```
 <h3>Client-side</h3>
-```Vue Js && Nuxt Js```
+```sh
+Vue Js && Nuxt Js
+```
 <h3>Database</h3>
 ```MySQL```
 <h2>Website</h2>
